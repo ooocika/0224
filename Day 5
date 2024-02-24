@@ -1,0 +1,874 @@
+fun needAnswer() = Random().nextBoolean()
+
+fun main(args: Array<String>){
+  val answer by lazy{
+    println("Calculating the answer...")
+    42
+  }
+  if(needAnswer()){
+    println("The answer is $answer.")
+  }else{
+    println("Sometimes no answer is the answer...")
+  }
+}
+//
+class ResourceLoader<T>(id: ResourceID<T>){
+  operator fun provideDelegate(thisRef: MyUI, prop: KProperty<*>):ReadOnlyProperty<MyUI, T{
+    checkProperty(thisRef, prop.name)}
+}
+
+private fun checkProperty(thisRef: MyUI, name: String){...}
+
+}
+
+fun<T> bindResource(id: ResourceID<T>): ResourceLoader<T>{...}
+
+classMyUI{
+  val image by bindResource(ResourceID.image_id)
+  val text by bindResource(ResourceID.text_id)
+  
+}
+//
+enum class RGB(RED, GREEN, BLUE)
+
+inline fun <reified T :Enum<T>>printAllValue(){
+  print(enumValues<T>.joinToString{it.name})
+}
+fun main(args: Array<String>){
+  printAllValue<RGB>()
+}
+//
+table{
+  tr{
+    td{+"Text"}
+  }
+}
+//
+val port = System.getenv("PORT")?.toIntOrNull()?: 80
+
+//
+inputDir.walk()
+.filter{it.isFile && it.name.endsWith(".txt")}
+.onEach {println("Moving $it to $outputDir")}
+.forEach {movieFile(it, File(outputDir, it.toRelativeString(inputDir)))}
+//
+class Block{
+  lateinit var content : String
+  
+}
+fun Block.copy() = Block().also{
+  it.content = this.content
+}
+
+fun Block.copy1() = Block().apply{
+  this.content = this@copy1.content
+}
+
+fun main(args: Array<String>){
+  val block = Block().apply {content = "content"}
+  val copy = block.copy()
+  println("Testing thte content was copied:")
+  println(block.content == copy.content)
+}
+//
+val outDirFile = File(outputDir.path).takeIf {it.exist()} ?: return false
+
+//
+fun main(args: Array<String>){
+  val input = "Kotlin"
+  val keyword = "in"
+
+val index = input.indexOF(keyword).takeIf{it>= 0} ?: error("keyword not found")
+
+println("'$keyword' was found in '$input'")
+println(input)
+println(" ".repeat(index) + "^")
+
+
+}
+//
+
+val index = input.indexOf(keyword).takeUnless{it < 0} ?: error("keyword not found")
+
+private fun testTakeUnless(string: String){
+  val result = string.takeUnless(String::isEmpty)
+
+  println("string = \"$string\"; result = \"$result"")
+}
+
+fun main(args: Array<String>){
+  testTakeUnless(""
+                testTakeUnless("abc"))
+}
+//
+fun main(args: Array<String>){
+  val words = "one two three four five six seven eight nine ten".split(' ')
+
+  val frequencies = words.groupingBy {it.first()}.eachCount()
+
+  println("Counting first letter: $frequencies.")
+
+val groupBy = words.groupBy {it.first()}.mapValues {_, list} -> list.size}
+println("Comparing the result with using ' groupBy': $(groupBy == frequencies}.")
+
+
+          }
+          //
+          class ImmutablePropertyBag(map: Map<String, Any>){
+            private val mapCopy = map.toMap()
+          }
+
+          //
+          fun main(args: Array<String>){
+            val map = mapOf("key"to 42)
+            val emptyMap = map - "key"
+
+            println("map: $map")
+            println("emptyMap: $emptyMap")
+          }
+          //
+          fun main(args: Array<String>){
+            val list1 = listOf("a", "b")
+            val list2 = listOf("x", "y", "z")
+            val minSize = minOf(list1.size, list2.size)
+            val longestList = maxOf(list1, list2, compareby {it.size})
+
+            println("minSize = $minSize")
+            println("longestList = $longestList")
+          }
+
+          //
+          fun main(args: Array<String>){
+            val squares = List(10) {index -> index * index}
+            val mutable = MutableList(10){ 0 }
+
+            println("squares")
+            println("mutable: $mutable")
+          }
+          //
+          fun main(args: Array<String>){
+            val map = mapOf("key"to 42)
+
+            val value: Int = map.getValue("key")
+
+            val mapWithDefault = map.withDefault {k -> k.length}
+
+            val value2 = mapWithDefault.getValue("key2")
+          
+          
+          println("value is $value")
+          println("value2 is $value2")
+          }
+          //
+          fun main(args: Array<String>){
+            val array = arrayOf("a", "b", "c")
+            println(array.toString())
+          
+          println(array.contentToString()
+          }
+          //
+          val engine = ScripEngineManager().getEngineByExtension("kts")!!
+              engine.eval("val x = 3")
+              println(engine.eval("x+2"))
+
+              //
+              //
+external class Node{
+  val firstChild: Node
+
+  fun appendChild(child: Node): Node
+
+  fun removeChild(child: Node): Node
+}
+//
+
+                  external interface JQuery {
+                  fun toggle(duration: Int = definedExternally): JQuery
+                  fun click(handler: (Event) -> Unit): JQuery
+                  }
+                  @JsModule("jquery")
+                  @JsNonModule
+                  @JsName("$")
+                  external fun jquery(selector: String): JQuery
+
+  fun main(args: Array<String>){
+    jquery(".tog")
+  }                
+  //
+  fun main(){
+    println("Hello world!")
+  }
+  //
+  fun main(args: Array<String>){
+    println(args.contentToString())
+  }
+  //
+  fun main(){
+    println("Hello world!")
+    println(42)
+  }
+  //
+  fun sum(a: Int, b: Int): Int{
+    return a + b
+  }
+
+  fun main(){
+    println("sum of 3 and 5 is")
+    println(sum(3,5))
+  }
+  //
+  fun sum(a: Int, b: Int) = a+b
+
+                  fun main({
+
+                    println("sum of 19 and 23 is $(sum(19,23)
+                  }")
+                            }
+   fun printSum(a: Int, b: Int):Unit{
+     println("sum of $a and $b is ${a+b}")
+   }                         
+
+   fun main(){
+     printSum(-1, 8)
+   }
+   // 
+   fun printSum(a:Int, b: Int)
+                            {
+                              println("sum of $a and $b is $(a+b")
+                            }
+   fun main(){
+     printSum(-1, 8)
+   }
+   //
+   fun main(){
+     val a: Int = 1
+     val b = 2
+     val c: Int
+     c = 3
+
+     println("a = $a, b = $b, c = $c")
+   }
+   //
+   fun main(){
+     var x = 5
+     x += 1
+
+     println("x = $x")
+   }
+
+   //
+   val PI = 3.14
+  val x = 0
+
+ fun incrementX(){
+   x += 1
+ }       
+
+ fun main(){
+   println("x = $x; PI = $PI")
+   incrementX()
+   println("incrementX()")
+  println("x = $x; PI = $PI")
+ }
+ //
+ class Shape
+                            //
+   class Retangle(var height:Double, var length: Double){
+     var perimeter = (height + length) * 2
+   }                         
+
+   //
+   class Rectangle(var height: Double, var length: Double){
+     var perimeter = (height + length) * 2
+   }
+   fun main(){
+
+
+     val rectangle = Rectangle(5.0, 2.0)
+     println("The perimeter is ${rectangle.perimeter")
+   }
+   //
+   open class Shape
+
+class Rectangle(var height:Double, var length: Double): Shape(){
+  var perimeter = (height+ length) *2
+}
+//
+fun main(){
+
+  var a =1
+  val s1 = "a is $a"
+
+  a=2
+  val s2 = "${s1.replace("is", "was")}, but now is $a"
+
+  println(s2)
+}
+//
+fun maxOf(a: Int, b: Int): Int{
+
+  if(a>b){
+    return a
+  }else{
+    return b
+  }
+}
+
+fun main(){
+  println("max of 0 and 42 is ${maxOf(0, 42)}")
+}
+//
+fun maxOf(a: Int, b: Int) = if(a > b) a else b
+
+  fun main(){
+    println("max of 0 and 42 is ${maxOf(0, 42)}")
+  }                          
+  //
+  fun main(){
+    val items = listOf("apple", "banana", "kiwifruit")
+    for(item in items){
+      println(item)
+    }
+  }
+  //
+  fun main(){
+    val items = listOf("apple", "banana", "kiwifruit")
+    for(index in items.indices){
+      println("item at $index is ${items[index]}")
+    }
+  }
+  //
+  fun main(){
+    val items =listOf("apple", "banana", "kiwifruit")
+    val index = 0
+
+    while(index < items.size){
+      println("item at $index is ${items[index]")
+      index++
+    }
+  }
+  //
+  fun describe(obj: Any):String = 
+                        when(obj {
+                          1 -> "One"
+                          "Hello" -> "Greeting"
+                          is Long -> "Long"
+                            !is String -> "Not a string"
+                          else -> Unknown
+                        
+
+
+                          fun main(){
+                            println(describe(1))
+                            println(describe("Hello"))
+                            println(describe(1000L))
+                            println(describe(2))
+                            println(describe("other"))
+                          }
+
+                          // 
+                          fun main(){
+                            val x = 10
+                            val y = 9
+
+                            if(x.in 1..y+1){
+                              println("fits in range")
+                            }
+                          }
+
+                          fun main(){
+                            val list = listOf("a", "b", "c")
+
+                            if(-1 !in..list.lastIndex){
+                              println("-1 is out of range")
+                            }
+                          }
+                          if(list.size !in list.indices){
+                            println("list size is out of valid list indices range, too")
+                          }
+                        }
+
+
+                        fun main(){
+                          for(x in 1..5){
+                            print(x)
+                          }
+                        }
+                        //
+                        fun main(){
+                          val items = listOf("apple", "banana", "kiwifruit")
+
+                          for(item in items){
+                            println(item)
+                          }
+                        }
+                        //f
+
+                             fun main(){
+                               val items = listOf("apple", "banana", "kiwifruit")
+
+                               when{
+                                 "orange" in items -> println("juicy")
+                                 "apple" in items -> println("apple is fine too")
+                               }
+                             }
+                             //
+                             fun main(){
+
+                               val items = listOf("apple", "banana", "kiwifruit")
+
+                               fruits
+                               .filter{it.startsWith("a")}
+                               .sortedBy {it}
+                               .map{it.uppercase()}
+                               .forEach{ println(it)}
+                             }
+                             // 
+                             fun parseInt(str: String): Int ?{
+                               
+                             }
+
+  fun parseInt(str: String): Int?{
+    return str.toIntOrNull()
+  }                        
+   
+                             fun printProduct(arg1: String, arg2: String){
+                               
+                               
+                               val x = parseInt(arg1)
+                               val y = parseInt(arg2)
+
+                               if(x != null && y != null){
+                                 println(x*y)
+                               }
+
+                               else{
+
+                                 println("'$args1' or 'args2' is not a number")
+                               }
+
+                             }
+                             fun main(){
+                               printProduct("6","7"
+                                           )
+                               printProduct("a","7"
+                                  )
+                               printProduct("a","b"
+                                  )
+                             }
+    fun parseInt(str: String): Int?{
+      return str.toIntOrNull()
+    }
+    fun printProduct(arg1: String, arg2: String){
+
+      val x = parseInt(arg1)
+      val y =parseInt(arg2)
+
+      if(x == null)
+      println("Wrong number format in arg1: '$arg1'")
+      return 
+    }
+    if(x == null)
+    println("Wrong number format in arg2: '$arg2'")
+    return 
+                             }
+    print (x*y)
+
+                             }
+                             fun main(){
+                                printProduct("6", "7")
+                                 printProduct("a", "7")
+                                  printProduct("99", "b")
+                             }
+
+                             //
+     fun getStringLength(obj: Any): Int?{
+       if(obj is String){
+         return obj.length
+       }
+
+       return null
+     }                        
+     fun main(){
+
+       fun printLength(obj: Any){
+         println("Getting the length of '$obj'. Result: ${getStringLength(obj) ? : " Error: The object is not a stirng"}")
+         
+       }
+
+        printLength("Incomprehensibilities")
+        printLength(1000)
+        printLength(listOf(Any()))
+     }
+     //
+     fun getStringLength(obj: Any): Int?{
+      it(obj !is String) return null
+       return obj.length
+     }
+
+     fun main(){
+       fun printLength(obj: Any){
+         
+       println("Getting the length of '$obj'. Result: ${getStringLength(obj) ? :" Error:" The object is not a string"}")
+       
+       }
+       printLength("Incomprehensibilities")
+       printLength(1000)
+       printLength(listOf(Any()))
+     }
+     //
+     fun getStringLength(obj: Any): Int? {
+
+       if(obj is String && obj.length > 0){
+      return obj.length
+       }
+
+       return null
+     }
+
+     fun main(){
+       fun printLength(obj: Any){
+         println("Getting the length of '$obj'. Result: ${getStringLength(obj) ? :" Error:" The object is not a string"}")
+       }
+
+       rintLength("Incomprehensibilities")
+        printLength("")
+        printLength(1000)
+     }
+     //
+     data class Customer(val name: String, val email: String)
+     //
+     fun foo(a: Int = 0, b: String = " "){...}
+
+     val positives = list.filter {x -> x > 0}
+
+     val positives = list.filter{it > 0}
+
+     if("john@example.com" in emailsList){...}
+
+     if("jane@example.com" in emailsList){...}
+
+     //
+     println("Name $name")
+     //
+     when (x) {
+       is Foo -> ...
+       is Bar -> ..
+       else -> ...
+     }
+     //
+     val list = listOf("a", "b", " c")
+
+     val map=  mapOf("a" to 1, "b " to 2, "c" to 3)
+
+     println(map["key"])
+
+    map["key"]= value
+
+                             for((k, v) in map){
+                               println("$k -> $v")
+                             }
+
+                             //
+                             for(i in 1..100 ){...}
+                             for(i in 1..< 100){...}
+                              for(x in 2..10 step 2){...}
+                               for(x in 10 downTo 1){...}
+                               (1..10).forEach{...}
+
+                               //
+                               val p: String by lazy{
+                                 
+                               }
+
+                               //
+                               fun String.spaceToCamelCase(){...}
+
+                               "Convert this to camelcase".spaceToCamelCase()
+
+                               object Resource{
+                                 val name ="Name"
+                                 
+                               }
+
+                               //
+                               abstract class MyAbstractClass{
+                                 abstract fun doSomething()
+                                 abstruct fun sleep()
+                               }
+                               fun main(){
+                               val myObject = object : MyAbstractClass(){
+                                 override fun doSomething(){
+                                   
+                                 }
+
+                                 override fun sleep(){
+                                   
+                                 }
+                               }  
+                               myObject.doSomething()
+                               }
+                               //
+    val files = File("Test").listFiles()
+
+    println(files?.size)
+
+    //
+    val files = File("Test").listFiles()
+
+    println(files?.size ?: "empty")
+
+    val filesSize  = files?.size ?:run {
+      val someSize = getSomeSize()
+      someSize *2
+    }
+    println(filesSize)
+    //
+    val values = ...
+                             val email = values["email"] ?:throw IllegalStateException("Email is missing!")
+//
+ val emails = 
+val mainEmail = emails.firstOrNull() ?: ""
+
+  val value = ...
+                             value?.let{
+                               
+                             }
+
+                             val value = ...
+                             val mapped = value?.let{transformValue(it)} ?:defaultValue
+
+
+                             //
+                             fun transform(color: String): Int{
+                               return when(color){
+                                 "Red" -> 0
+                                 "Green" -> 1
+                                 "Blue" -> 2
+                                 else -> throw IllegalArgumentException("Invalid color param value")
+                               }
+                             }
+                             //
+                             fun test(){
+                               val result = try{
+                                 count()
+                               }catch(e: ArithmeticException){
+                                 throw IllegalStateException(2)
+                               }
+                             }
+
+                             //
+                             val y = if(x == 1){
+                               "one"
+                             }else if(x == 2){
+                               "two"
+                             }else{
+                               "other"
+                             }
+
+                             //
+                             fun arrayOfMinusOnes(size: Int): IntArray{
+                               return IntArray(size).apply{fill(-1)}
+                             }
+                             //
+                             fun theAnswer() = 42
+
+                             fun theAnswer(): Int{
+                               return 42
+                             }
+                             //
+    fun transform(color: String): Int = when(color){
+      "Red" -> 0
+      "Green" -> 1
+      "Blue" -> 2
+      else -> throw IllegalArgumentException("Invalid color param value")
+    }                         
+
+    //
+    class Turtle{
+      fun penDown()
+      fun penUp()
+      fun  turn(degrees: Double)
+      fun forward(pixels: Double)
+      
+    }
+
+    val myTurtle = Turtle()
+    with(myTurtle){
+      penDown()
+      for(i in 1..4){
+        forward(100.0)
+        turn(90.0)
+      }
+
+      penUp()
+    }
+    //
+    val myRectangle = Rectangle().apply{
+      length = 4
+      breadth = 5
+      color = 0XFAFAFA
+    }
+    //
+    val stream =Files.newInputStream(Paths.get("/some/file.txt"))
+    stream.buffered().reader().use{reader ->
+    println(reader.readText())}
+
+    // 
+    inline fun <reified T : Any> Gson.fromJson(json: JsonElement): T = this.fromJson(json, T::class.java)
+
+    //
+    var a =1
+                             var b = 2
+                             a  =b.alse{b=a}
+
+    fun calcTaxes(): BigDecimal = TODO("Waiting for feedback from accounting")                         
+
+    //
+    open class DeclarationProcessor()
+
+    object EmptyDeclarationProcessor : DeclarationProcessor()
+
+    fun processDeclarations()
+    var declaraionCount = 1
+
+                             interface Foo
+                             class FooImpl : Foo
+                             fun Foo(): Foo {return FooImpl}
+
+                             //
+class MyTestCase{
+
+  @Test fun 'ensure everything works'()
+
+  @Test fun ensureEverythingWorks.onAndroid()
+}
+
+//
+cosnt val MAX_COUNT = 8
+val USER_NAME_FIELD = "UserName"
+
+                             val mutableCollection: MutableSet<String> = HashSet()
+
+                             val PersonComparator : Comparator<Person> = 
+
+                            class C{
+                              private val _elementList = mutableListOf<Element>()
+
+                              val elementList: List<Element>
+                              get() = _elementList
+                            }
+                            //
+   if(elements != null){
+     for(element in elements){
+       
+     }
+   }   
+
+   ///
+   class A(val x: Int)
+
+   fun foo(x: Int){}
+
+   fun bar(){
+     foo(1)
+     }
+   //
+   abstract class Foo<out T :Any> : IFoo{
+     abstract fun foo(a: Int): This
+   }
+
+   class FooImpl: Foo(){
+     constructor(x:String) : this(x)
+
+     val x = object : IFoo
+   }
+   //
+   class Person(id: Ind, name: String)
+
+   //
+   class Person(
+     
+   id: Int,
+     name: String,
+     surname: String
+   ) : Human(id, name)
+   //
+   class Person(
+     id: Int,
+      name: String
+     surname: String
+   ): Human(id, name)
+   KotlinMaker
+
+      class MyFavouriteVeryLongClassHolder:
+                             MyLongHolder<MyFavouriteVeryLongClass>(),
+                             SomeOtherInterface,
+                             AndAnotherOne{
+
+                               fun foo()
+                             }
+
+                             //
+                          class MyFavouriteVeryLongClassHolder:
+                           MyLongHolder<MyFavouriteVeryLongClass>(),
+                           SomeOtherInterface,
+                           AndAnotherOne{
+
+                             fun foo()
+                           }
+public / protected private internal expect actual final open abstract sealed const external override
+                             lateinit tailrec vararg suspend inner enum annotation fun companion inline value infix value infix operator data
+
+                             //
+                             @Named("Foo")
+                             private val foo: Foo
+
+
+                             @Target(AnnotationTarget.PROPERTY)
+                             annotation class JsonExclude
+
+                             //
+                             @JsonExclude @JvmField
+                             var x : String
+                             @Test fun foo()
+
+                             //
+                             @file:JvmName("FooBar"
+                                          )
+
+                             fun longMethodName(
+                               argument: ArgumentType =defaultValue,
+                               argument2: AnotherArgumentType,
+                               
+                             ):ReturnType{
+                               
+                             }
+
+                             fun foo():Int{
+                               return 1
+                             }
+                             fun foo() =1
+                             fun f(x:String, y :String, z:String) = 
+                            veryLongFunctionCallWithManyWords(andLongParametersToo(), x,y,z)
+
+                            //
+                            val isEmpty: Boolean get() = size ==0
+
+                             val foo: Stringget()
+
+                             private val defaultCharset:Charset? = 
+                            EncodingRegistry.getInstance().getDefaultCharsetForPropertiesFiles(file)
+
+
+
+
+                            if(!component.isSynicing && 
+                                !hasAnyKotlinRuntimeInScope(module))
+                            return createKotlinNotConfiguredPanel(module)
+                             }
+                             //
+                             353
+                             /
+                             1299
+                             
